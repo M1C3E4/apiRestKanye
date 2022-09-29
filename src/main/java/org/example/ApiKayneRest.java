@@ -13,14 +13,14 @@ public class ApiKayneRest {
     public static void main(String[] args) throws Exception{
         ApiKayneRest apiKayneRest = new ApiKayneRest();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("*Pierwsza perełka mądrości Kanye Westa: "); apiKayneRest.sendGet();
+        System.out.println("*Pierwsza perełka mądrości Kanye Westa: ");
+        apiKayneRest.sendGet();
         for(int i = 0; i<101; i++) {
             System.out.println("*Jeżeli chcesz poznać kolejną perełkę mądrości Kanye Westa wpisz next:");
             String next = scanner.next();
             if (next.equals("next")) {
                 apiKayneRest.sendGet();
             }
-
         }
     }
     private void sendGet() throws Exception {
