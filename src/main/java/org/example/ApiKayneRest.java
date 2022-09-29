@@ -4,6 +4,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Scanner;
 
 public class ApiKayneRest {
 
@@ -11,7 +12,16 @@ public class ApiKayneRest {
 
     public static void main(String[] args) throws Exception{
         ApiKayneRest apiKayneRest = new ApiKayneRest();
-        apiKayneRest.sendGet();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("*Pierwsza perełka mądrości Kanye Westa: "); apiKayneRest.sendGet();
+        for(int i = 0; i<101; i++) {
+            System.out.println("*Jeżeli chcesz poznać kolejną perełkę mądrości Kanye Westa wpisz next:");
+            String next = scanner.next();
+            if (next.equals("next")) {
+                apiKayneRest.sendGet();
+            }
+
+        }
     }
     private void sendGet() throws Exception {
         HttpRequest request = HttpRequest.newBuilder()
