@@ -36,7 +36,7 @@ public class ApiKayneRest {
     private final String url = "https://api.kanye.rest";
 
     private String sendGet() throws Exception {
-        HttpRequest request = HttpRequest.newBuilder().GET().uri(URI.create(url)).setHeader("User-Agent", "Java 11 HttpClient Bot").build();
+        HttpRequest request = HttpRequest.newBuilder().GET().uri(URI.create(url)).build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         String responseVar = response.body();
