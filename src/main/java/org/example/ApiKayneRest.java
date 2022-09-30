@@ -12,17 +12,22 @@ public class ApiKayneRest {
     private final HttpClient httpClient = HttpClient.newBuilder().build();
 
     public static void main(String[] args) throws Exception {
+
         PrintWriter saveDB = new PrintWriter("DataBase.txt");
         ApiKayneRest apiKayneRest = new ApiKayneRest();
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("*Pierwsza perełka mądrości Kanye Westa: ");
-        apiKayneRest.sendGet();
+        String response = apiKayneRest.sendGet();
+        saveDB.println(response);
+
         while (true) {
             System.out.println("*Jeżeli chcesz poznać kolejną perełkę mądrości Kanye Westa wpisz next w przeciwnym razie wpisz end:");
             String next = scanner.next();
             if (next.equals("next")) {
-                apiKayneRest.sendGet();
+                saveDB.println(apiKayneRest.sendGet());
             } else {
+                saveDB.close();
                 break;
             }
         }
@@ -31,11 +36,7 @@ public class ApiKayneRest {
     private final String url = "https://api.kanye.rest";
 
     private String sendGet() throws Exception {
-        HttpRequest request = HttpRequest.newBuilder()
-                .GET()
-                .uri(URI.create(url))
-                .setHeader("User-Agent", "Java 11 HttpClient Bot")
-                .build();
+        HttpRequest request = HttpRequest.newBuilder().GET().uri(URI.create(url)).setHeader("User-Agent", "Java 11 HttpClient Bot").build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         String responseVar = response.body();
