@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.PrintWriter;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -11,6 +12,7 @@ public class ApiKayneRest {
     private final HttpClient httpClient = HttpClient.newBuilder().build();
 
     public static void main(String[] args) throws Exception {
+        PrintWriter saveDB = new PrintWriter("DataBase.txt");
         ApiKayneRest apiKayneRest = new ApiKayneRest();
         Scanner scanner = new Scanner(System.in);
         System.out.println("*Pierwsza perełka mądrości Kanye Westa: ");
