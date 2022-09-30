@@ -30,7 +30,7 @@ public class ApiKayneRest {
 
     private final String url = "https://api.kanye.rest";
 
-    private void sendGet() throws Exception {
+    private String sendGet() throws Exception {
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(url))
@@ -38,6 +38,8 @@ public class ApiKayneRest {
                 .build();
 
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
+        String responseVar = response.body();
+        System.out.println(responseVar);
+        return responseVar;
     }
 }
